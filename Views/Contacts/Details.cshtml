@@ -1,0 +1,57 @@
+﻿@model appmvc.Models.Contact
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <h4>Информация</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Имя</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FName)
+        </dd>
+        <dt class="col-sm-2">Фамилия</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LName)
+        </dd>
+        <dt class="col-sm-2">Отчество</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MName)
+        </dd>
+
+        <dt class="col-sm-2">Информация</dt>
+        <dd>
+            <a asp-controller="ContactInfoes" asp-action="Create" asp-route-id="@Html.ViewData.Model.Id">Добавить</a>
+        </dd>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Номер</th>
+                    <th>Описание</th>
+                </tr>
+                @foreach (var item in Model.Infos)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Note)
+                        </td>
+                        <td>
+                            <a asp-controller="ContactInfoes" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                            <a asp-controller="ContactInfoes" asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
+    <a asp-action="Index">Назад</a>
+</div>

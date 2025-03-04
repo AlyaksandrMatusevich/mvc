@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\ASP.NET Core_MVC App_PhoneBook.props" />
+</Project>

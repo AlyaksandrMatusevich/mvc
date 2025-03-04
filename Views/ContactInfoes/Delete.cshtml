@@ -1,0 +1,32 @@
+﻿@model appmvc.Models.ContactInfo
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Удалить контакт</h1>
+
+<h3>Вы уверены, что хотитет удалить контакт?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">Номер</dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt class = "col-sm-2">Описание</dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+        <dt class = "col-sm-2">ID пользователя </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Contact.Id)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-controller="Contacts" asp-action="Index">Назад</a>
+    </form>
+</div>
